@@ -66,7 +66,6 @@ npm run dev
 
 ## Estrutura do Projeto
 
-.
 ├── src/
 │ ├── controllers/ # Funções para cada rota (ex: criação de usuários, upload de vídeos)
 │ ├── middleware/ # Middlewares (ex: autenticação com JWT, upload com multer)
