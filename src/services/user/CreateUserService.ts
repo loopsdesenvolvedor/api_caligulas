@@ -4,11 +4,12 @@ import { hash } from "bcryptjs";
 type UserRequest = {
   username: string;
   email: string;
+  avatar?: string;
   password: string;
 };
 
 class CreateUserService {
-  async execute({ username, email, password }: UserRequest) {
+  async execute({ username, email, avatar, password }: UserRequest) {
     const userAlreadyExists = await prisma.user.findFirst({
       where: { email: email },
     });
@@ -24,6 +25,7 @@ class CreateUserService {
         username,
         email,
         password: hashedPassword,
+        avatar,
       },
     });
 
