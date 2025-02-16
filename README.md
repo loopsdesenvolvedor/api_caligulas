@@ -66,6 +66,7 @@ npm run dev
 
 ## Estrutura do Projeto
 
+```bash
 ├── src/
 │ ├── controllers/ # Funções para cada rota (ex: criação de usuários, upload de vídeos)
 │ ├── middleware/ # Middlewares (ex: autenticação com JWT, upload com multer)
@@ -80,6 +81,7 @@ npm run dev
 ├── .gitignore # Ignora arquivos/diretórios do Git (como a pasta uploads)
 ├── package.json # Dependências e scripts do projeto
 └── README.md # Este arquivo
+```
 
 ## Contribuindo
 
