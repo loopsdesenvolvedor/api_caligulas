@@ -5,6 +5,8 @@ import uploadConfig from "./lib/multer";
 
 import { CreateUserController } from "./controllers/user/CreateUserController";
 import { AuthUserController } from "./controllers/user/AuthUserController";
+import { DestroyUserController } from "./controllers/user/DestroyUserController";
+
 
 const routes = Router();
 
@@ -17,5 +19,6 @@ routes.post(
 );
 
 routes.post("/session", new AuthUserController().handle);
+routes.delete("/delete", isAuthenticate, new DestroyUserController().handle);
 
 export { routes };
