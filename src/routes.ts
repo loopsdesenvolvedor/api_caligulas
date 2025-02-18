@@ -1,5 +1,5 @@
 import { Router } from "express";
-import multer, { FileFilterCallback } from "multer";
+import multer from "multer";
 
 import uploadConfig from "./lib/multer";
 
@@ -9,6 +9,8 @@ import { DetailUserController } from "./controllers/user/DetailUserController";
 import { DestroyUserController } from "./controllers/user/DestroyUserController";
 
 import { isAuthenticate } from "./middlewares/isAuthenticate";
+import { RecoverUserPasswordController } from "./controllers/user/RecoverUserPasswordController";
+import { ResetPasswordUserController } from "./controllers/user/ResetPasswordUserController";
 
 const routes = Router();
 
@@ -23,5 +25,7 @@ routes.post(
 routes.post("/session", new AuthUserController().handle);
 routes.get("/me", isAuthenticate, new DetailUserController().handle);
 routes.delete("/delete", isAuthenticate, new DestroyUserController().handle);
+routes.post("/recover-password", new RecoverUserPasswordController().handle);
+routes.post("/reset-password", new ResetPasswordUserController().handle);
 
 export { routes };
