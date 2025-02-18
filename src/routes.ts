@@ -26,6 +26,6 @@ routes.post("/session", new AuthUserController().handle);
 routes.get("/me", isAuthenticate, new DetailUserController().handle);
 routes.delete("/delete", isAuthenticate, new DestroyUserController().handle);
 routes.post("/recover-password", new RecoverUserPasswordController().handle);
-routes.post("/reset-password", new ResetPasswordUserController().handle);
+routes.put("/reset-password", new ResetPasswordUserController().handle);
 
 export { routes };

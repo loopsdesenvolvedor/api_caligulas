@@ -3,7 +3,9 @@ import { ResetPasswordUserService } from "../../services/user/ResetPasswordUserS
 
 class ResetPasswordUserController {
   async handle(req: Request, res: Response) {
-    const { token, newPassword } = req.body;
+    const { token } = req.query; // O token vem da query da URL
+    const { newPassword } = req.body;
+    console.log(token);
 
     if (!token || !newPassword) {
       res.status(400).json({ error: "Token e nova senha são obrigatórios" });
@@ -12,7 +14,10 @@ class ResetPasswordUserController {
 
     try {
       const resetPasswordUserService = new ResetPasswordUserService();
-      const response = resetPasswordUserService.execute({ token, newPassword });
+      const response = await resetPasswordUserService.execute({
+        token: token as string,
+        newPassword,
+      });
 
       res.status(200).json(response);
     } catch (error) {

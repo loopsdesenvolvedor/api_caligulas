@@ -25,17 +25,12 @@ class RecoverUserPasswordService {
         data: { resetToken, resetTokenExpires },
       });
 
+      console.log("Token gerado:", resetToken);
+      console.log("Expiração do token:", resetTokenExpires);
+
       const resetLink = `http://localhost:3000/reset-password?token=${resetToken}`;
 
       await EmailService.sendPasswordResetEmail(email, resetLink);
-
-      await prisma.user.update({
-        where: { email },
-        data: {
-          resetToken: null,
-          resetTokenExpires: null, // Ou defina um valor de expiração passado
-        },
-      });
 
       return { message: "E-mail de recuperação enviado com sucesso." };
     } catch (error) {

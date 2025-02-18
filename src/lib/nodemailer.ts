@@ -1,12 +1,13 @@
 import nodemailer from "nodemailer";
 
+// Configuração do transporte usando as variáveis de ambiente
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 587,
-  secure: false, // para usar o TLS
+  secure: false, // Usando TLS
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
+    user: process.env.EMAIL_USER, // Email do Gmail
+    pass: process.env.EMAIL_PASS, // Senha de aplicativo gerada
   },
 });
 
@@ -27,6 +28,7 @@ class EmailService {
     }
   }
 
+  // Função para enviar o e-mail de recuperação de senha
   async sendPasswordResetEmail(to: string, resetLink: string) {
     const subject = "Recuperação de Senha";
     const htmlContent = `
